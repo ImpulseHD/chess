@@ -1,0 +1,41 @@
+/* Normalize */
+
+.d-flex {
+    display: flex;
+}
+
+.jc-center {
+    justify-content: center;
+}
+
+.ai-center {
+    align-items: center;
+}
+
+.light {
+    background-color: #f0d9b5;
+}
+.dark {
+    background-color: #b58863;
+}
+
+/* Board Section */
+
+.board {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    display: grid;
+    grid-template-rows: 81.25px 81.25px 81.25px 81.25px 81.25px 81.25px 81.25px 81.25px;
+    grid-template-columns: 81.25px 81.25px 81.25px 81.25px 81.25px 81.25px 81.25px 81.25px;
+}
+
+.board__square {
+    content: '';
+}
+
+.board__square i {
+    font-size: 45px;
+}

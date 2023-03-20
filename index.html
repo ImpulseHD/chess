@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Importation Font-Awesome -->
+    <script src="https://kit.fontawesome.com/b6c650f7e4.js" crossorigin="anonymous"></script>
+
+    <!-- Importation CSS -->
+    <link rel="stylesheet" href="src/styles.css">
+
+    <title>Chess</title>
+</head>
+<body>
+    <div class="board">
+        <div class="board__square d-flex jc-center ai-center light"><i class="fa-solid fa-chess-rook"></i></div>
+        <div class="board__square d-flex jc-center ai-center dark"><i class="fa-solid fa-chess-knight"></i></div>
+        <div class="board__square d-flex jc-center ai-center light"><i class="fa-solid fa-chess-bishop"></i></div>
+        <div class="board__square d-flex jc-center ai-center dark"><i class="fa-solid fa-chess-queen"></i></div>
+        <div class="board__square d-flex jc-center ai-center light"><i class="fa-solid fa-chess-king"></i></div>
+        <div class="board__square d-flex jc-center ai-center dark"><i class="fa-solid fa-chess-bishop"></i></div>
+        <div class="board__square d-flex jc-center ai-center light"><i class="fa-solid fa-chess-knight"></i></div>
+        <div class="board__square d-flex jc-center ai-center dark"><i class="fa-solid fa-chess-rook"></i></div>
+
+        <div class="board__square d-flex jc-center ai-center dark"><i class="fa-solid fa-chess-pawn"></i></div>
+        <div class="board__square d-flex jc-center ai-center light"><i class="fa-solid fa-chess-pawn"></i></div>
+        <div class="board__square d-flex jc-center ai-center dark"><i class="fa-solid fa-chess-pawn"></i></div>
+        <div class="board__square d-flex jc-center ai-center light"><i class="fa-solid fa-chess-pawn"></i></div>
+        <div class="board__square d-flex jc-center ai-center dark"><i class="fa-solid fa-chess-pawn"></i></div>
+        <div class="board__square d-flex jc-center ai-center light"><i class="fa-solid fa-chess-pawn"></i></div>
+        <div class="board__square d-flex jc-center ai-center dark"><i class="fa-solid fa-chess-pawn"></i></div>
+        <div class="board__square d-flex jc-center ai-center light"><i class="fa-solid fa-chess-pawn"></i></div>
+
+        <div class="board__square d-flex jc-center ai-center light"></div>
+        <div class="board__square d-flex jc-center ai-center dark"></div>
+        <div class="board__square d-flex jc-center ai-center light"></div>
+        <div class="board__square d-flex jc-center ai-center dark"></div>
+        <div class="board__square d-flex jc-center ai-center light"></div>
+        <div class="board__square d-flex jc-center ai-center dark"></div>
+        <div class="board__square d-flex jc-center ai-center light"></div>
+        <div class="board__square d-flex jc-center ai-center dark"></div>
+
+        <div class="board__square d-flex jc-center ai-center dark"></div>
+        <div class="board__square d-flex jc-center ai-center light"></div>
+        <div class="board__square d-flex jc-center ai-center dark"></div>
+        <div class="board__square d-flex jc-center ai-center light"></div>
+        <div class="board__square d-flex jc-center ai-center dark"></div>
+        <div class="board__square d-flex jc-center ai-center light"></div>
+        <div class="board__square d-flex jc-center ai-center dark"></div>
+        <div class="board__square d-flex jc-center ai-center light"></div>
+
+
+        <div class="board__square d-flex jc-center ai-center light"></div>
+        <div class="board__square d-flex jc-center ai-center dark"></div>
+        <div class="board__square d-flex jc-center ai-center light"></div>
+        <div class="board__square d-flex jc-center ai-center dark"></div>
+        <div class="board__square d-flex jc-center ai-center light"></div>
+        <div class="board__square d-flex jc-center ai-center dark"></div>
+        <div class="board__square d-flex jc-center ai-center light"></div>
+        <div class="board__square d-flex jc-center ai-center dark"></div>
+
+        <div class="board__square d-flex jc-center ai-center dark"></div>
+        <div class="board__square d-flex jc-center ai-center light"></div>
+        <div class="board__square d-flex jc-center ai-center dark"></div>
+        <div class="board__square d-flex jc-center ai-center light"></div>
+        <div class="board__square d-flex jc-center ai-center dark"></div>
+        <div class="board__square d-flex jc-center ai-center light"></div>
+        <div class="board__square d-flex jc-center ai-center dark"></div>
+        <div class="board__square d-flex jc-center ai-center light"></div>
+
+        <div class="board__square d-flex jc-center ai-center light"><i class="fa-regular fa-chess-pawn"></i></div>
+        <div class="board__square d-flex jc-center ai-center dark"><i class="fa-regular fa-chess-pawn"></i></div>
+        <div class="board__square d-flex jc-center ai-center light"><i class="fa-regular fa-chess-pawn"></i></div>
+        <div class="board__square d-flex jc-center ai-center dark"><i class="fa-regular fa-chess-pawn"></i></div>
+        <div class="board__square d-flex jc-center ai-center light"><i class="fa-regular fa-chess-pawn"></i></div>
+        <div class="board__square d-flex jc-center ai-center dark"><i class="fa-regular fa-chess-pawn"></i></div>
+        <div class="board__square d-flex jc-center ai-center light"><i class="fa-regular fa-chess-pawn"></i></div>
+        <div class="board__square d-flex jc-center ai-center dark"><i class="fa-regular fa-chess-pawn"></i></div>
+
+        <div class="board__square d-flex jc-center ai-center dark"><i class="fa-regular fa-chess-rook"></i></div>
+        <div class="board__square d-flex jc-center ai-center light"><i class="fa-regular fa-chess-knight"></i></div>
+        <div class="board__square d-flex jc-center ai-center dark"><i class="fa-regular fa-chess-bishop"></i></div>
+        <div class="board__square d-flex jc-center ai-center light"><i class="fa-regular fa-chess-queen"></i></div>
+        <div class="board__square d-flex jc-center ai-center dark"><i class="fa-regular fa-chess-king"></i></div>
+        <div class="board__square d-flex jc-center ai-center light"><i class="fa-regular fa-chess-bishop"></i></div>
+        <div class="board__square d-flex jc-center ai-center dark"><i class="fa-regular fa-chess-knight"></i></div>
+        <div class="board__square d-flex jc-center ai-center light"><i class="fa-regular fa-chess-rook"></i></div>
+    </div>
+
+<!-- <i class="fa-regular fa-chess-king"></i>
+    <i class="fa-solid fa-chess-king"></i>
+
+    <i class="fa-regular fa-chess-queen"></i>
+    <i class="fa-solid fa-chess-queen"></i>
+
+    <i class="fa-regular fa-chess-rook"></i>
+    <i class="fa-solid fa-chess-rook"></i>
+
+    <i class="fa-regular fa-chess-bishop"></i>
+    <i class="fa-solid fa-chess-bishop"></i>
+
+    <i class="fa-regular fa-chess-knight"></i>
+    <i class="fa-solid fa-chess-knight"></i>
+
+    <i class="fa-regular fa-chess-pawn"></i>
+    <i class="fa-solid fa-chess-pawn"></i> -->
+
+    <script src="/src/chess.js"></script>
+</body>
+</html>
