@@ -1,8 +1,19 @@
-/* Back-End Part */
+// ! Back-End Part
 
 const pieces = document.querySelectorAll('.board__square');
 
-let board = ['br0', 'bn', 'bb', 'bq', 'bk0', 'bb', 'bn', 'br0',
+// Classic Board
+var classic_board = ['r', 'n', 'b', 'q', 'k', 'b', 'n', 'r',
+                     'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p',
+                     'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o',
+                     'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o',
+                     'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o',
+                     'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o',
+                     'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p',
+                     'r', 'n', 'b', 'q', 'k', 'b', 'n', 'r'];
+
+// Board
+var board = ['br0', 'bn', 'bb', 'bq', 'bk0', 'bb', 'bn', 'br0',
              'bp0', 'bp0', 'bp0', 'bp0', 'bp0', 'bp0', 'bp0', 'bp0',
              'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o',
              'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o',
@@ -11,11 +22,21 @@ let board = ['br0', 'bn', 'bb', 'bq', 'bk0', 'bb', 'bn', 'br0',
              'wp0', 'wp0', 'wp0', 'wp0', 'wp0', 'wp0', 'wp0', 'wp0',
              'wr0', 'wn', 'wb', 'wq', 'wk0', 'wb', 'wn', 'wr0'];
 
-let player_to_play = "white";
-let move_played_by_white = 0;
-let move_played_by_black = 0;
+// Test Board
+var board = ['br0', 'bn', 'bb', 'bq', 'bk0', 'bb', 'bn', 'br0',
+             'bp0', 'bp0', 'bp0', 'bp0', 'bp0', 'bp0', 'bp0', 'bp0',
+             'o', 'o', 'o', 'o', 'o', '', 'o', 'o',
+             'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o',
+             'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o',
+             'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o',
+             'wp0', 'wp0', 'wp0', 'wp0', 'wp0', 'wp0', 'wp0', 'wp0',
+             'wr0', 'wn', 'wb', 'wq', 'wk0', 'wb', 'wn', 'wr0'];
 
-// Change the player according to the number of moves of each player
+var player_to_play = "white";
+var move_played_by_white = 0;
+var move_played_by_black = 0;
+
+// Change the player according to the number of moves of each player.
 function change_player() {
     if (move_played_by_white > move_played_by_black) {
         player_to_play = "black";
@@ -24,7 +45,128 @@ function change_player() {
     }
 }
 
-// Remove the digit next to the piece
+// ? Look if the current player is in check.
+function is_check() {
+    if (player_to_play == "white") {
+        
+        // ? Get the initial position of the king.
+        // * Browse the board to determine the position of the king.
+
+        var white_king_position = 0;
+        for (var i = 0; i < board.length; i++) {
+            if (board[i].slice(0, 2) == 'wk') {
+                white_king_position = i;
+                break;
+            }
+        }
+        
+        var check = false;
+
+        // ? Look if the white king is check by a pawn.
+        // * The first condition checks if we are not looking for a piece outside the board.
+        // * The second condition checks if we are in check by a pawn.
+
+        // * Suppose that the king is at the point (0;0)
+        // * The function will search for an enemy pawn in this order: (-1;1) (1;1)
+        
+        if (white_king_position - 8 - 1 > 0 && board[white_king_position - 8 - 1].slice(0, 2) == 'bp') {
+            check = true;
+        }
+        if (white_king_position - 8 + 1 > 0 && board[white_king_position - 8 + 1].slice(0, 2) == 'bp') {
+            check = true;
+        }
+
+        // ? Look if the white king is check by a knight.
+        // * The first condition checks if we are not looking for a piece outside the board.
+        // * The second condition checks if we are in check by a knight.
+
+        // * Suppose that the king is at the point (0;0)
+        // * The function will search for an enemy knight in this order: (-2;1) (-1;2) (1;2) (2;1) (2;-1) (1;-2) (-1;-2) (-2;-1)
+
+        if (white_king_position - 8 - 2 > 0 && board[white_king_position - 8 - 2].slice(0, 2) == 'bn') {
+            check = true;
+        }
+        if (white_king_position - 16 - 1 > 0 && board[white_king_position - 16 - 1].slice(0, 2) == 'bn') {
+            check = true;
+        }
+        if (white_king_position - 16 + 1 > 0 && board[white_king_position - 16 + 1].slice(0, 2) == 'bn') {
+            check = true;
+        }
+        if (white_king_position - 8 + 2 > 0 && board[white_king_position - 8 + 2].slice(0, 2) == 'bn') {
+            check = true;
+        }
+        if (white_king_position + 8 + 2 < 64 && board[white_king_position + 8 + 2].slice(0, 2) == 'bn') {
+            check = true;
+        }
+        if (white_king_position + 16 + 1 < 64 && board[white_king_position + 16 + 1].slice(0, 2) == 'bn') {
+            check = true;
+        }
+        if (white_king_position + 16 - 1 < 64 && board[white_king_position + 16 - 1].slice(0, 2) == 'bn') {
+            check = true;
+        }
+        if (white_king_position + 8 - 2 < 64 && board[white_king_position + 8 - 2].slice(0, 2) == 'bn') {
+            check = true;
+        }
+
+        // ? Look if the white king is check by a bishop.
+        // * The loop will allow to browse a whole diagonal in search of a bishop.
+
+        // * The first if statement stop the loop if we meet an allied piece: 
+        // * --> The first condition checks if we are not looking for a piece outside the board.
+        // * --> The second condition checks if the piece is an alloyed piece.
+
+        // * The second if statement stops the loop if we meet a bishop.
+        // * --> The first condition checks if we are not looking for a piece outside the board.
+        // * --> The second condition checks if the piece is a bishop
+
+        // * Suppose that the king is at the point (0;0)
+        // * The function will search for an enemy bishop in this order: (-1;1) (1;1) (1;-1) (-1;-1)
+        
+        for (let i = 1; i < 8; i++) {
+            if (white_king_position + (- 8 - 1) * i > 0 && board[white_king_position + (- 8 - 1) * i][0] == 'w') {
+                check = false;
+                break;
+            }
+            if (white_king_position + (- 8 - 1) * i > 0 && board[white_king_position + (- 8 - 1) * i].slice(0, 2) == 'bb') {
+                check = true;
+                break;
+            }
+        }
+        for (let i = 1; i < 8; i++) {
+            if (white_king_position + (- 8 + 1) * i > 0 && board[white_king_position + (- 8 + 1) * i][0] == 'w') {
+                check = false;
+                break;
+            }
+            if (white_king_position + (- 8 + 1) * i > 0 && board[white_king_position + (- 8 + 1) * i].slice(0, 2) == 'bb') {
+                check = true;
+                break;
+            }
+        }
+        for (let i = 1; i < 8; i++) {
+            if (white_king_position + (+ 8 + 1) * i > 0 && board[white_king_position + (+ 8 + 1) * i][0] == 'w') {
+                check = false;
+                break;
+            }
+            if (white_king_position + (+ 8 + 1) * i > 0 && board[white_king_position + (+ 8 + 1) * i].slice(0, 2) == 'bb') {
+                check = true;
+                break;
+            }
+        }
+        for (let i = 1; i < 8; i++) {
+            if (white_king_position + (+ 8 - 1) * i > 0 && board[white_king_position + (+ 8 - 1) * i][0] == 'w') {
+                check = false;
+                break;
+            }
+            if (white_king_position + (+ 8 - 1) * i > 0 && board[white_king_position + (+ 8 - 1) * i].slice(0, 2) == 'bb') {
+                check = true;
+                break;
+            }
+        }
+        console.log(check);
+    }
+}
+
+// Remove the digit next to the piece.
 function get_piece_to_move_without_digit(pos1) {
     return pos1.slice(0, 2);
 }
@@ -45,9 +187,6 @@ function get_piece_to_move(pos1, pos2) {
 
 // Manage the pawn moves
 function pawn_move(pos1, pos2) {
-    // Faire en sorte de pouvoir manger un pion qui se trouve en diagonale
-
-    // If it's the turn of the white
     if (player_to_play == "white") {
 
         // Can't move forward if there is a already piece
@@ -84,7 +223,6 @@ function pawn_move(pos1, pos2) {
         }
     }
 
-    // If it's the turn of the black
     if (player_to_play == "black") {
 
         // Can't move forward if there is a already piece
@@ -122,7 +260,7 @@ function pawn_move(pos1, pos2) {
     }
 }
 
-/* Front-End Part */
+// ! Front-End Part
 
 const selected_squares = document.querySelector('.board');
 
@@ -130,11 +268,11 @@ const selected_squares = document.querySelector('.board');
 window.addEventListener('load', () => {
 
     // The initial and the final position.
-    let pos1 = null;
-    let pos2 = null;
+    var pos1 = null;
+    var pos2 = null;
 
     // Waiting for the user click on one square
-    for (let i = 0; i < selected_squares.children.length; i++) {
+    for (var i = 0; i < selected_squares.children.length; i++) {
         selected_squares.children.item(i).addEventListener('click', () => {
             
             // Get the initial position of the piece and the final position.
