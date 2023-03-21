@@ -1,3 +1,11 @@
+/* Variables */
+
+:root {
+    /* 1280 x 720 */
+    --responsive-height: 0.07813vw;
+    --responsive-height: 0.13889vh;
+}
+
 /* Normalize */
 
 .d-flex {
@@ -28,8 +36,8 @@
     transform: translate(-50%, -50%);
 
     display: grid;
-    grid-template-rows: 81.25px 81.25px 81.25px 81.25px 81.25px 81.25px 81.25px 81.25px;
-    grid-template-columns: 81.25px 81.25px 81.25px 81.25px 81.25px 81.25px 81.25px 81.25px;
+    grid-template-rows: calc(81.25 * var(--responsive-height)) calc(81.25 * var(--responsive-height)) calc(81.25 * var(--responsive-height)) calc(81.25 * var(--responsive-height)) calc(81.25 * var(--responsive-height)) calc(81.25 * var(--responsive-height)) calc(81.25 * var(--responsive-height)) calc(81.25 * var(--responsive-height));
+    grid-template-columns: calc(81.25 * var(--responsive-height)) calc(81.25 * var(--responsive-height)) calc(81.25 * var(--responsive-height)) calc(81.25 * var(--responsive-height)) calc(81.25 * var(--responsive-height)) calc(81.25 * var(--responsive-height)) calc(81.25 * var(--responsive-height)) calc(81.25 * var(--responsive-height)); 
 }
 
 .board__square {
@@ -37,5 +45,5 @@
 }
 
 .board__square i {
-    font-size: 45px;
+    font-size: calc(45 * var(--responsive-height));
 }
