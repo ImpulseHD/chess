@@ -53,7 +53,7 @@ function pawn_move(pos1, pos2) {
         // Can't move forward if there is a already piece
         if (board[pos2] == 'o') {
 
-            // If it's the first move, allows you to move two squares forward.
+            // Allows you to move two squares forward if it's the first move.
             if (board[pos1]  == "wp0") {
                 if (pos1 - 8 == pos2 || pos1 - 16 == pos2) {
                     pieces.item(pos2).innerHTML = pieces.item(pos1).innerHTML;
@@ -64,7 +64,7 @@ function pawn_move(pos1, pos2) {
                 }
             }
             
-            // If it's not the first move, allows you to move one square forward.
+            // Allows you to move one square forward if it's not the first move .
             else if (pos1 - 8 == pos2) {
                 pieces.item(pos2).innerHTML = pieces.item(pos1).innerHTML;
                 pieces.item(pos1).innerHTML = "";
@@ -72,6 +72,15 @@ function pawn_move(pos1, pos2) {
                 [board[pos1], board[pos2]] = [board[pos2], board[pos1]];
                 move_played_by_white += 1;
             }
+        }
+
+        // Allow you to take the ennemy pawn if it's in diagonale.
+        if (board[pos2][0] == "b" && pos1 - 8 != pos2) {
+            pieces.item(pos2).innerHTML = pieces.item(pos1).innerHTML;
+            pieces.item(pos1).innerHTML = "";
+    
+            [board[pos1], board[pos2]] = [board[pos2], board[pos1]];
+            move_played_by_white += 1;
         }
     }
 
@@ -100,6 +109,15 @@ function pawn_move(pos1, pos2) {
                 [board[pos1], board[pos2]] = [board[pos2], board[pos1]];
                 move_played_by_black += 1;
             }
+        }
+
+        // Allow you to take the ennemy pawn if it's in diagonale.
+        if (board[pos2][0] == "w" && pos1 + 8 != pos2) {
+            pieces.item(pos2).innerHTML = pieces.item(pos1).innerHTML;
+            pieces.item(pos1).innerHTML = "";
+            
+            [board[pos1], board[pos2]] = [board[pos2], board[pos1]];
+            move_played_by_black += 1;
         }
     }
 }
